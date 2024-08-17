@@ -31,6 +31,7 @@ button.btn-block {
   border-radius: 20px;
   position: relative;
   word-wrap: break-word;
+  /* margin-bottom: 30px; Added space for time */
 }
 
 .message-bubble.sent {
@@ -48,16 +49,20 @@ button.btn-block {
 }
 
 .message-time {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.7);
-  position: absolute;
-  bottom: -15px;
-  right: 10px;
+  text-align: right;
+  margin-top: 5px; /* Space between message text and time */
 }
 
 /* Adjust time color for received messages */
 .message-bubble.received .message-time {
   color: rgba(0, 0, 0, 0.5);
+}
+
+/* Remove bottom border from ListGroup */
+.list-group-item {
+  border-bottom: none !important;
 }
 
 /* Responsive Styles - Adjustments for Larger Screens */

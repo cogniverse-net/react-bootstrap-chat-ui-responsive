@@ -6,11 +6,14 @@ const MessageList = ({ messages }) => {
   return (
     <ListGroup variant="flush">
       {messages.map((message, index) => (
-        <ListGroup.Item key={index} className="d-flex justify-content-between align-items-start">
-          <div>
-            <strong>{message.sender}</strong>: {message.text}
+        <ListGroup.Item
+          key={index}
+          className={`d-flex justify-content-${message.sender === 'user' ? 'end' : 'start'} `}
+        >
+          <div className={`message-bubble ${message.sender === 'user' ? 'sent' : 'received'}`}>
+            {message.text}
+            <div className="message-time">{message.time}</div>
           </div>
-          <small className="text-muted">{message.time}</small>
         </ListGroup.Item>
       ))}
     </ListGroup>

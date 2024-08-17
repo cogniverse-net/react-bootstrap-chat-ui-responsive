@@ -3,6 +3,13 @@ import React from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 
 const MessageInput = ({ input, setInput, handleSendMessage }) => {
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) { // Check if Enter key is pressed without Shift key
+      e.preventDefault(); // Prevent default newline in text area
+      handleSendMessage();
+    }
+  };
+
   return (
     <Row className="bg-white p-3">
       <Col xs={10}>
@@ -11,11 +18,11 @@ const MessageInput = ({ input, setInput, handleSendMessage }) => {
           placeholder="Type a message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+          onKeyDown={handleKeyDown} // Updated event
         />
       </Col>
       <Col xs={2} className="text-right">
-        <Button variant="primary" onClick={handleSendMessage} block>
+        <Button variant="primary" onClick={handleSendMessage} block="true">
           Send
         </Button>
       </Col>
